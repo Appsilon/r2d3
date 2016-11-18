@@ -1,0 +1,7 @@
+dependencies:
+  - name: r2d3
+    version: 0.1.0
+    src: htmlwidgets/lib/
+    script:
+      - d3.v4/d3.v4.min.js
+      - textures/textures.js
