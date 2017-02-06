@@ -29,13 +29,23 @@ var execute_instruction = function(env, inst_parts) {
     var elem = inst_parts[it];
     switch(elem.command) {
       case "save_var":
-        env[elem.args.name] = current;
+        var env_pointer = env;
+        name_parts = elem.args.name.split('.')
+        for (var i = 0; i < name_parts.length - 1; ++i) {
+          env_pointer = env_pointer[name_parts[i]];
+        }
+        env_pointer[name_parts[name_parts.length - 1]] = current;
         break;
       case "get_var":
         current = env[elem.args.name] || window[elem.args.name];
         break;
+      case "evaluate":
+        current = eval(elem.args.str);
+        break;
       case "js_prop":
-        return current[elem.args.name];
+        // return current[elem.args.name];
+        current = current[elem.args.name];
+        break;
       case "js_func":
         // on("mouseout", js_func(d3() %>% select(this()) %>% style("fill", url(get_var("dots")))))
         return function(dot, i) {
@@ -47,7 +57,8 @@ var execute_instruction = function(env, inst_parts) {
           env["."] = dot;
           env[".x"] = dot;
           env[".y"] = i;
-          var result = execute_instruction(env, elem.args.block);
+          var results = elem.args.map(function(block) { return execute_instruction(env, block); })
+          var result = results[results.length - 1];
           env["this"] = _this;
           env["."] = _dot;
           env[".x"] = _x;
@@ -58,7 +69,6 @@ var execute_instruction = function(env, inst_parts) {
         var evaluated_args = elem.args.map(function(arg) {
           if (Array.isArray(arg) && arg[0].command) {
             // TODO: this should be more robust than simple heuristic.
-            console.log("go deeper")
             return execute_instruction(env, arg);
           }
           return tryToGetFunctions(arg);

@@ -3,5 +3,5 @@ dependencies:
     version: 0.1.0
     src: htmlwidgets/lib/
     script:
-      - d3.v4/d3.v4.min.js
+      - d3.v3/d3.js
       - textures/textures.js

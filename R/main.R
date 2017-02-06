@@ -24,8 +24,8 @@ save_var <- function(insts, name) {
   insts
 }
 
-js_func <- function(insts) {
-  list(list(command = "js_func", args=list(block = insts)))
+js_func <- function(...) {
+  list(list(command = "js_func", args=list(blocks = ...)))
 }
 js_prop <- function(insts, prop_name) {
   insts[[length(insts) + 1]] <- list(command = "js_prop", args = list(name = prop_name))
@@ -34,12 +34,17 @@ js_prop <- function(insts, prop_name) {
 get_var <- function(name) {
   list(list(command = "get_var", args=list(name = name)))
 }
+evaluate <- function(str) {
+  list(list(command = "evaluate", args = list(str=str)))
+}
 this <- function() { get_var("this") }
 d3 <- function() { get_var("d3") }
 textures <- function() { get_var("textures") }
 
-js_funs <- c("call")
-d3_funs <- c("select", "selectAll", "append", "data", "text", "enter", "attr", "style", "on")
+js_funs <- c("call", "log")
+d3_funs <- c("select", "selectAll", "append", "data", "text", "pipeline", "clearRect", "satellite", "save",
+             "translate", "beginPath", "stroke", "restore", "sink", "scale",
+             "enter", "attr", "style", "on", "getContext", "node", "pipe", "source", "geo", "graticule", "timer")
 textures_funs <- c("url", "lines", "thicker", "heavier", "thinner", "size", "strokeWidth", "circles", "radius", "size")
 register_functions <- c(js_funs, d3_funs, textures_funs)
 for(funName in register_functions) {
