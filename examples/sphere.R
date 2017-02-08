@@ -15,7 +15,7 @@ sphere <- function() {
   i$i3 <- get_var("canvas") %>% node() %>% save_var("canvasNode")
   i$i4 <- get_var("canvasNode") %>% getContext("2d") %>% save_var("context")
 
-  i$i5 <- d3() %>% js_prop("geo") %>% graticule() %>% call() %>% save_var("graticule") # var graticule = d3.geo.graticule()(),
+  i$i5 <- d3() %>% js_prop("geo") %>% graticule() %>% call() %>% save_var("graticule")
 
   timer_function <- js_func(
     evaluate("

@@ -81,6 +81,7 @@ var execute_instruction = function(env, inst_parts) {
             return o;
           });
         }
+        console.log(current, elem.fun)
         current = current[elem.fun].apply(current, evaluated_args);
         break;
       default:

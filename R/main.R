@@ -15,6 +15,7 @@ execute <- function(insts, css = "") {
 createFunction <- function(funName) {
   print(funName)
   function(insts, ...) {
+    args <- list(...) %>% purrr::map(~ ifelse(is.function(.), r2js::compile(.), .))
     insts[[length(insts) + 1]] <- list(command = "apply", fun = funName, args = list(...))
     insts
   }
@@ -43,7 +44,7 @@ textures <- function() { get_var("textures") }
 
 js_funs <- c("call", "log")
 d3_funs <- c("select", "selectAll", "append", "data", "text", "pipeline", "clearRect", "satellite", "save",
-             "translate", "beginPath", "stroke", "restore", "sink", "scale",
+             "translate", "beginPath", "stroke", "restore", "sink", "scale", 'angle', 'radialLine', 'datum', 'curve', 'radial',
              "enter", "attr", "style", "on", "getContext", "node", "pipe", "source", "geo", "graticule", "timer")
 textures_funs <- c("url", "lines", "thicker", "heavier", "thinner", "size", "strokeWidth", "circles", "radius", "size")
 register_functions <- c(js_funs, d3_funs, textures_funs)

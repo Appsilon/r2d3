@@ -15,21 +15,15 @@ d3_bar_chart <- function(v) {
     attr("width", 500) %>%
     attr("height", 500) %>%
     save_var("svg")
-  i$i2 <- textures() %>%
-    lines() %>%
-    thicker() %>%
-    save_var("dashed")
-  i$i3 <- get_var("svg") %>%
-    call(get_var("dashed"))
   i$i4 <- get_var("svg") %>%
     selectAll("rect") %>%
     data(dataset) %>%
     enter() %>%
     append("rect") %>%
     attr("width", 25) %>%
-    attr("height", js_func(get_var(".") %>% js_prop("height"))) %>%
-    attr("x", js_func(get_var(".") %>% js_prop("x"))) %>%
-    attr("y", js_func(get_var(".") %>% js_prop("y"))) %>%
+    attr("height", r2js::compile(function(i) i$height)) %>%
+    attr("x", r2js::compile(function(i) i$x)) %>%
+    attr("y", r2js::compile(function(i) i$y)) %>%
     style("fill", "black")
   execute(i)
 }
