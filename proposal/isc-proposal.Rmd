@@ -1,15 +1,15 @@
 ---
-title: "`r proposal`"
-author: "`r author`"
-date: "`r Sys.Date()`"
+title: "r2d3 - R domain specific language for D3.js"
 output: html_document
 ---
 
 ```{r setup, eval=TRUE, results='hide', echo=FALSE}
 knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```
-
 Note: _We are aware that package with a same name already exists (_ [_https://github.com/hadley/r2d3_](https://github.com/hadley/r2d3) _), however what we are proposing is a completely different thing and this particular name will suit it the most. Hadley's library is no longer maintained and is only a D3 wrapper for ggplot2._ 
+
+**Applicants:** Filip Stachura, Marek Rogala, Olga Mierzwa-Sulima, Krzysztof Wróbel<br>
+on behalf of [Appsilon Data Science](http://appsilondatascience.com). Email: hello@appsilondatascience.com
 
 ### **Short Description**
 
@@ -17,21 +17,18 @@ Data driven documents in R without predefined wrappers. With this package you ca
 
 ###  **The problem and motivation** 
 
-It's natural for a data scientist to look for a better data visualisation methods in R. Although there are many greatly supported R packages that allow to create plots (ggplot2, plotly, rbokeh), when it comes to non-standard visualisations like network graphs, bubble or radial charts you have to look for something created by the community. 
+Problems that data scientist needs to visualize are often very complex and require more advanced solutions. It's natural to look for a better data visualisation methods in R. Although there are many greatly supported R packages that allow to create plots (ggplot2, plotly, rbokeh), when it comes to non-standard visualisations like network graphs, bubble or radial charts you have to look for something created by the community. 
 
-If you know JavaScript (JS) you might think about wrapping a D3 component into **htmlwidget** and use it in your RMarkdown report or Shiny app. In fact there are many libraries that were already written to wrap a specific D3 components, for instance: NetworkGraphs( [http://christophergandrud.github.io/networkD3/](http://christophergandrud.github.io/networkD3/) ), BubbleChart (https://github.com/jcheng5/bubbles), CoffeeWheel ( [https://github.com/armish/coffeewheel](https://github.com/armish/coffeewheel) ), etc. . 
+If you know JavaScript (JS) you might think about wrapping a D3 component into **htmlwidget** and use it in your RMarkdown report or Shiny app. Unfortunately only some D3 visualisation methods are implemented in R by community, for instance: NetworkGraphs( [http://christophergandrud.github.io/networkD3/](http://christophergandrud.github.io/networkD3/) ), BubbleChart (https://github.com/jcheng5/bubbles), CoffeeWheel ( [https://github.com/armish/coffeewheel](https://github.com/armish/coffeewheel) ), etc. . What's more only some of them generate truly interactive visualisations, other allow for image or SVG generation.
+So when it comes to customization they are very limited, time-consuming and often difficult to do without an appropriate JS knowledge. Since not many data scientists know JS, for the sake of their work, they often resort to manual editing of produced SVG files or static images in Graphics editors (e.g. Adobe Photoshop). In other cases they order visualisations from D3 specialists. 
 
-However only some of them generate truly interactive visualisations, other only allow for image or SVG generation. And when it comes to customization they are very limited, time-consuming and often difficult to do without an appropriate JS knowledge. Since not many data scientists know JS, for the sake of their work, they often resort to manual editing of produced SVG files or static images in Photoshop. In other case they order visualisations from D3 specialists. Either way it's difficult, time and cost consuming to use what's currently available on the market.
+Either way, currently it's difficult, time and cost consuming to create trully interactive and advanced visualisations in R.
 
  **Value Proposition** 
 
-So in order to tackle the problems of customized, interactive and pleasant data visualisations we are proposing a standardized package wrapping D3, which will allow data scientists to recreate any data visualisation possible in D3 directly with R language. With a D3-like syntax anyone would be able to create visualisations like those below. 
+So in order to tackle the problems of customized, interactive and pleasant data visualisations we are proposing a standardized package wrapping D3, which will allow data scientists to recreate any data visualisation possible in D3 directly with R language without any knowledge of JS. With a D3-like syntax anyone would be able to create visualisations available in D3 among others like those below. 
 
-![](https://s3-us-west-2.amazonaws.com/notion-static/03b7a7a7d48e4298b98157ea9a9cda97/Untitled)
-
-![](https://s3-us-west-2.amazonaws.com/notion-static/c45064a1ae1f40d7ab0f880a6886239a/Untitled)
-
-![](https://s3-us-west-2.amazonaws.com/notion-static/bc7c50a46f4a4594b86f3d014f666048/Untitled)
+![](images/charts.png)
 
 In a longer term it will lead to much cleaner code in R scripts and Shiny apps, due to not mixing too much JS with R. Also it will be less likely to run into compatibility issues, which you can have when integrating various R packages based on D3. Hopefully it will also be possible to unify current standards for wrapping D3 plugins and components for using them where it's necessary: especialy in RMarkdown reports and Shiny apps.
 
@@ -45,7 +42,7 @@ We think this project aligns well with the R Consortium's goals:
 - it will create and promote the best practices for the data visualisation in R language code and Shiny applications.
 - encourage and increase R user adoption, especially among those who were unsatisfied with current R visualisations methods.
 
-### The Plan: How are you going to solve the problem?
+### **Solution**
 
 We solve this using **htmlwidget** . Thanks to that users can use D3 in RMarkdown reports and reactive Shiny apps. The structure of the visualisation (plot, graph, etc.) is described in R and later on interpreted in the browser. As the code is interpreted it might be adapted for compatibility with different API's of D3 (there are breaking changes between v3 and v4 [https://github.com/d3/d3/blob/master/CHANGES.md]).
 
@@ -55,7 +52,7 @@ The biggest challenge that will have to be faced is **debugging.**
 
 Currently debugging in POC is not easy. We want to provide a way of exception reporting and handling. Hopefully we will be able to report an error with an appropriate link to documentation explaining the proper usage of methods (like it's done in React currently).
 
-We do not want to play with d3 internals, so d3.js related problems will be redirected to it's Github Issue page. However, in case of unexpected problems during project's time-frame we will be in touch with a d3 community.
+We do not want to play with D3 internals, so D3.js related problems will be redirected to it's Github Issue page. However, in case of unexpected problems during project's time-frame we will be in touch with a D3 community.
 
 During POC we have created a few design assumptions for future package development:
 
@@ -68,336 +65,346 @@ During POC we have created a few design assumptions for future package developme
 
 All those assumptions are going to be discussed with R community in the 1st phase of this project before going into 2nd phase of implementation. This will bring the best standards and practices to this library.
 
-### Example 1: Basic bar chart
+**Example 1: Basic bar chart**
 
-![](https://s3-us-west-2.amazonaws.com/notion-static/f60b2aab02884dbb88e5e3a32aa93788/Untitled)
+![](images/r2d3barcharts.png)
 
-### D3.js
+![](images/r2d3barchartcode.png)
+<!-- ### D3.js -->
 
-	d3_bar_chart <- function(dataset) { 
-	 var svg = d3
-	 .select("#r2d3")
-	 .append("svg")
-	 .attr("width", width)
-	 .attr("height", height);
-	
-	 svg
-	 .selectAll("rect")
-	 .data(dataset)
-	 .enter()
-	 .append("rect")
-	 .attr("x", function(d, i) {
-	 return i * (width / dataset.length);
-	 })
-	 .attr("y", function(d) {
-	 return height - (d * 4);
-	 })
-	 .attr("width", width / dataset.length - barPadding)
-	 .attr("height", function(d) {
-	 return d * 4;
-	 })
-			.style("fill", "black");
-	}
+<!-- 	d3_bar_chart <- function(dataset) {  -->
+<!-- 	 var svg = d3 -->
+<!-- 	 .select("#r2d3") -->
+<!-- 	 .append("svg") -->
+<!-- 	 .attr("width", width) -->
+<!-- 	 .attr("height", height); -->
 
-### Proof of Concept
+<!-- 	 svg -->
+<!-- 	 .selectAll("rect") -->
+<!-- 	 .data(dataset) -->
+<!-- 	 .enter() -->
+<!-- 	 .append("rect") -->
+<!-- 	 .attr("x", function(d, i) { -->
+<!-- 	 return i * (width / dataset.length); -->
+<!-- 	 }) -->
+<!-- 	 .attr("y", function(d) { -->
+<!-- 	 return height - (d * 4); -->
+<!-- 	 }) -->
+<!-- 	 .attr("width", width / dataset.length - barPadding) -->
+<!-- 	 .attr("height", function(d) { -->
+<!-- 	 return d * 4; -->
+<!-- 	 }) -->
+<!-- 			.style("fill", "black"); -->
+<!-- 	} -->
 
-	d3_bar_chart <- function(v) {
-	 dataset <- data.frame(
-	 v = v,
-	 height = v * 5,
-	 x = 30 * 1:length(v),
-	 y = 150 - v * 5
-	 )
-	 i <- list()
-	 i$i1 <- d3() %>%
-	 select("#r2d3") %>%
-	 append("svg") %>%
-	 attr("width", 500) %>%
-	 attr("height", 200) %>%
-	 save_var("svg")
-	 i$i2 <- get_var("svg") %>%
-	 selectAll("rect") %>%
-	 data(dataset) %>%
-	 enter() %>%
-	 append("rect") %>%
-	 attr("x", r2js::compile(function(i) i$x)) %>%
-	 attr("y", r2js::compile(function(i) i$y)) %>%
-	 attr("width", 25) %>%
-	 attr("height", r2js::compile(function(i) i$height)) %>%
-	 style("fill", "black")
-	 execute(i, height = "200px")
+<!-- ### Proof of Concept -->
 
-### Our goal: r2d3
+<!-- 	d3_bar_chart <- function(v) { -->
+<!-- 	 dataset <- data.frame( -->
+<!-- 	 v = v, -->
+<!-- 	 height = v * 5, -->
+<!-- 	 x = 30 * 1:length(v), -->
+<!-- 	 y = 150 - v * 5 -->
+<!-- 	 ) -->
+<!-- 	 i <- list() -->
+<!-- 	 i$i1 <- d3() %>% -->
+<!-- 	 select("#r2d3") %>% -->
+<!-- 	 append("svg") %>% -->
+<!-- 	 attr("width", 500) %>% -->
+<!-- 	 attr("height", 200) %>% -->
+<!-- 	 save_var("svg") -->
+<!-- 	 i$i2 <- get_var("svg") %>% -->
+<!-- 	 selectAll("rect") %>% -->
+<!-- 	 data(dataset) %>% -->
+<!-- 	 enter() %>% -->
+<!-- 	 append("rect") %>% -->
+<!-- 	 attr("x", r2js::compile(function(i) i$x)) %>% -->
+<!-- 	 attr("y", r2js::compile(function(i) i$y)) %>% -->
+<!-- 	 attr("width", 25) %>% -->
+<!-- 	 attr("height", r2js::compile(function(i) i$height)) %>% -->
+<!-- 	 style("fill", "black") -->
+<!-- 	 execute(i, height = "200px") -->
 
-	d3_bar_chart <- function(dataset) {
-	 r2d3({
-	 svg <- d3() %>%
-	 select("#r2d3") %>%
-	 append("svg") %>%
-	 attr("width", width) %>%
-	 attr("height", height)
-	
-	 svg %>%
-	 selectAll("rect") %>%
-	 data(dataset) %>%
-	 enter() %>%
-	 append("rect") %>%
-	 # One can use purrr like lambdas:
-	 attr("x", ~ .y *(width / length(dataset)) %>%
-	 attr("y", ~ height - (.x * 4)) %>%
-	 attr("width", width / length(dataset)) %>%
-	 # Classic functions works as well:
-	 attr("height", function (i) i * 4) %>%
-	 style("fill", "black")
-	 })
-	}
+<!-- ### Our goal: r2d3 -->
 
-### Example 2: Sphere animation
+<!-- 	d3_bar_chart <- function(dataset) { -->
+<!-- 	 r2d3({ -->
+<!-- 	 svg <- d3() %>% -->
+<!-- 	 select("#r2d3") %>% -->
+<!-- 	 append("svg") %>% -->
+<!-- 	 attr("width", width) %>% -->
+<!-- 	 attr("height", height) -->
+
+<!-- 	 svg %>% -->
+<!-- 	 selectAll("rect") %>% -->
+<!-- 	 data(dataset) %>% -->
+<!-- 	 enter() %>% -->
+<!-- 	 append("rect") %>% -->
+<!-- 	 # One can use purrr like lambdas: -->
+<!-- 	 attr("x", ~ .y *(width / length(dataset)) %>% -->
+<!-- 	 attr("y", ~ height - (.x * 4)) %>% -->
+<!-- 	 attr("width", width / length(dataset)) %>% -->
+<!-- 	 # Classic functions works as well: -->
+<!-- 	 attr("height", function (i) i * 4) %>% -->
+<!-- 	 style("fill", "black") -->
+<!-- 	 }) -->
+<!-- 	} -->
+
+**Example 2: Sphere animation**
 
 [](https://cdn.rawgit.com/filipstachura/0ec130d0d8e478882d626ae94c77a117/raw/73b8a21adf9ef63ae9699ea242964db6a7f84be2/sphere-r2d3.html)
 
 Using r2d3 creating animations feels natural as it does in D3. No need to animate frames. Examples in this gist is completely created with R and usable: 
- [https://cdn.rawgit.com/filipstachura/0ec130d0d8e478882d626ae94c77a117/raw/73b8a21adf9ef63ae9699ea242964db6a7f84be2/sphere-r2d3.html](https://cdn.rawgit.com/filipstachura/0ec130d0d8e478882d626ae94c77a117/raw/73b8a21adf9ef63ae9699ea242964db6a7f84be2/sphere-r2d3.html) 
+
+<!--html_preserve-->
+<iframe width="100%" height="400" frameborder="0" scrolling="no" src="https://cdn.rawgit.com/filipstachura/0ec130d0d8e478882d626ae94c77a117/raw/73b8a21adf9ef63ae9699ea242964db6a7f84be2/sphere-r2d3.html"></iframe>
+<!--/html_preserve-->
 
 Current POC code is not perfect, but still we have created fairly complicated animations directly in RStudio watching them within the Viewer. It feels awesome and we want more.
 
-### D3.js
+![](images/r2d3globecode.png)
+<!-- ### D3.js -->
 
-	var canvas = d3.select("canvas"),
-	 canvasNode = canvas.node(),
-	 context = canvasNode.getContext("2d");
-	
-	var width = canvasNode.width,
-	 height = canvasNode.height,
-	 distance = 1.4,
-	 scale = 500;
-	
-	var graticule = d3.geo.graticule()(),
-	 sphere = {type: "Sphere"};
-	
-	d3.timer(function(elapsed) {
-	 context.clearRect(0, 0, width, height);
-	 context.save();
-	
-	 var tilt = (-89 + Math.abs((elapsed / 30) % 358 - 179)) * Math.PI / 180,
-	 alpha = Math.acos(distance * Math.cos(tilt) * .99);
-	
-	 var render = d3.geo.pipeline()
-	 .source(d3.geo.jsonSource)
-	 .pipe(d3.geo.rotate, 0, 0, elapsed / 3000)
-	 .pipe(d3.geo.clipCircle, Math.acos(1 / distance) - 1e-6);
-	
-	 if (alpha) render
-	 .pipe(d3.geo.rotate, 0, Math.PI + tilt, 0)
-	 .pipe(d3.geo.clipCircle, Math.PI - alpha)
-	 .pipe(d3.geo.rotate, 0, -Math.PI - tilt, 0);
-	
-	 render = render
-	 .pipe(d3.geo.project, d3.geo.satellite(distance, tilt), .5 / scale)
-	 .sink(d3.geom.contextSink, context);
-	
-	 context.translate(width / 2, height / 2);
-	 context.scale(scale, -scale);
-	 context.lineWidth = 1 / scale;
-	
-	 context.beginPath();
-	 render(graticule);
-	 context.stroke();
-	
-	 context.beginPath();
-	 render(sphere);
-	 context.lineWidth = 2 / scale;
-	 context.stroke();
-	
-	 context.restore();
-	});
+<!-- 	var canvas = d3.select("canvas"), -->
+<!-- 	 canvasNode = canvas.node(), -->
+<!-- 	 context = canvasNode.getContext("2d"); -->
 
-### Proof of Concept
+<!-- 	var width = canvasNode.width, -->
+<!-- 	 height = canvasNode.height, -->
+<!-- 	 distance = 1.4, -->
+<!-- 	 scale = 500; -->
 
-	library(r2d3)
-	library(magrittr) 
-	
-	i <- list()
-	
-	i$i1 <- d3() %>%
-	 select(".r2d3") %>%
-	 append("canvas") %>%
-	 attr("width", 960) %>%
-	 attr("height", 500)
-	i$i2 <- d3() %>%
-	 select("canvas") %>%
-	 save_var("canvas")
-	i$i3 <- get_var("canvas") %>% node() %>% save_var("canvasNode")
-	i$i4 <- get_var("canvasNode") %>% getContext("2d") %>% save_var("context")
-	i$i5 <- d3() %>% js_prop("geo") %>% graticule() %>% call() %>% save_var("graticule")
-	
-	# This could be avoided but we don't have time for that at this point.
-	# This functionality allows to gradually refactor code from javascript to R. 
-	timer_function <- js_func(
-	 evaluate("
-	 env.context.clearRect(0, 0, 960, 500);
-	 env.context.save();
-	
-	 var tilt = (-89 + Math.abs((env['.x'] / 30) % 358 - 179)) * Math.PI / 180,
-	 alpha = Math.acos(1.4 * Math.cos(tilt) * .99);
-	
-	 env.context.beginPath();
-	
-	 env.context.translate(960 / 2, 500 / 2);
-	 env.context.scale(500, -500);
-	 env.context.lineWidth = 1 / 500;
-	
-	 var render = d3.geo.pipeline()
-	 .source(d3.geo.jsonSource)
-	 .pipe(d3.geo.rotate, 0, 0, env['.x'] / 3000)
-	 .pipe(d3.geo.clipCircle, Math.acos(1 / 1.4) - 1e-6)
-	
-	 if (alpha) render
-	 .pipe(d3.geo.rotate, 0, Math.PI + tilt, 0)
-	 .pipe(d3.geo.clipCircle, Math.PI - alpha)
-	 .pipe(d3.geo.rotate, 0, -Math.PI - tilt, 0);
-	
-	 render = render
-	 .pipe(d3.geo.project, d3.geo.satellite(1.4, tilt), .5 / 500)
-	 .sink(d3.geom.contextSink, env.context)(env.graticule);
-	
-	 env.context.stroke();
-	 env.context.restore();")
-	 )
-	
-	 i$i6 <- d3() %>% timer(timer_function)
-	
-	 execute(i)
+<!-- 	var graticule = d3.geo.graticule()(), -->
+<!-- 	 sphere = {type: "Sphere"}; -->
 
-### Our goal: r2d3
+<!-- 	d3.timer(function(elapsed) { -->
+<!-- 	 context.clearRect(0, 0, width, height); -->
+<!-- 	 context.save(); -->
 
-	r2d3({
-	 canvas <- d3() %>% select("canvas")
-	 canvasNode <- canvas %>% node()
-	 context <- canvasNode %>% getContext("2d")
-	 width <- canvasNode$width
-	 height <- canvasNode$height
-	 distance <- 1.4
-	 scale <- 500
-	 graticule <- d3()$geo %>% graticule()()
-	 sphere <- list(type = "Sphere")
-	 
-	 d3() %>% timer(function(elapsed) {
-	 context %>% clearRect(0, 0, width, height)
-	 context %>% save()
-	 tilt <- (abs((elapsed / 30) %% 358 - 179) - 89) * pi / 180
-	 alpha <- acos(distance * cos(tilt)) * 0.99
-	 render <- d3()$geo %>% 
-	 	pipeline() %>%
-	 source(d3()$geo$jsonSource) %>%
-	 pipe(d3()$geo$rotate, 0, 0, elapsed / 3000) %>%
-	 pipe(d3()$geo$clipCircle, acos(1 / distance) - 1e-6)
-	 
-	 ...
-	 })
-	})
+<!-- 	 var tilt = (-89 + Math.abs((elapsed / 30) % 358 - 179)) * Math.PI / 180, -->
+<!-- 	 alpha = Math.acos(distance * Math.cos(tilt) * .99); -->
+
+<!-- 	 var render = d3.geo.pipeline() -->
+<!-- 	 .source(d3.geo.jsonSource) -->
+<!-- 	 .pipe(d3.geo.rotate, 0, 0, elapsed / 3000) -->
+<!-- 	 .pipe(d3.geo.clipCircle, Math.acos(1 / distance) - 1e-6); -->
+
+<!-- 	 if (alpha) render -->
+<!-- 	 .pipe(d3.geo.rotate, 0, Math.PI + tilt, 0) -->
+<!-- 	 .pipe(d3.geo.clipCircle, Math.PI - alpha) -->
+<!-- 	 .pipe(d3.geo.rotate, 0, -Math.PI - tilt, 0); -->
+
+<!-- 	 render = render -->
+<!-- 	 .pipe(d3.geo.project, d3.geo.satellite(distance, tilt), .5 / scale) -->
+<!-- 	 .sink(d3.geom.contextSink, context); -->
+
+<!-- 	 context.translate(width / 2, height / 2); -->
+<!-- 	 context.scale(scale, -scale); -->
+<!-- 	 context.lineWidth = 1 / scale; -->
+
+<!-- 	 context.beginPath(); -->
+<!-- 	 render(graticule); -->
+<!-- 	 context.stroke(); -->
+
+<!-- 	 context.beginPath(); -->
+<!-- 	 render(sphere); -->
+<!-- 	 context.lineWidth = 2 / scale; -->
+<!-- 	 context.stroke(); -->
+
+<!-- 	 context.restore(); -->
+<!-- 	}); -->
+
+<!-- ### Proof of Concept -->
+
+<!-- 	library(r2d3) -->
+<!-- 	library(magrittr)  -->
+
+<!-- 	i <- list() -->
+
+<!-- 	i$i1 <- d3() %>% -->
+<!-- 	 select(".r2d3") %>% -->
+<!-- 	 append("canvas") %>% -->
+<!-- 	 attr("width", 960) %>% -->
+<!-- 	 attr("height", 500) -->
+<!-- 	i$i2 <- d3() %>% -->
+<!-- 	 select("canvas") %>% -->
+<!-- 	 save_var("canvas") -->
+<!-- 	i$i3 <- get_var("canvas") %>% node() %>% save_var("canvasNode") -->
+<!-- 	i$i4 <- get_var("canvasNode") %>% getContext("2d") %>% save_var("context") -->
+<!-- 	i$i5 <- d3() %>% js_prop("geo") %>% graticule() %>% call() %>% save_var("graticule") -->
+
+<!-- 	# This could be avoided but we don't have time for that at this point. -->
+<!-- 	# This functionality allows to gradually refactor code from javascript to R.  -->
+<!-- 	timer_function <- js_func( -->
+<!-- 	 evaluate(" -->
+<!-- 	 env.context.clearRect(0, 0, 960, 500); -->
+<!-- 	 env.context.save(); -->
+
+<!-- 	 var tilt = (-89 + Math.abs((env['.x'] / 30) % 358 - 179)) * Math.PI / 180, -->
+<!-- 	 alpha = Math.acos(1.4 * Math.cos(tilt) * .99); -->
+
+<!-- 	 env.context.beginPath(); -->
+
+<!-- 	 env.context.translate(960 / 2, 500 / 2); -->
+<!-- 	 env.context.scale(500, -500); -->
+<!-- 	 env.context.lineWidth = 1 / 500; -->
+
+<!-- 	 var render = d3.geo.pipeline() -->
+<!-- 	 .source(d3.geo.jsonSource) -->
+<!-- 	 .pipe(d3.geo.rotate, 0, 0, env['.x'] / 3000) -->
+<!-- 	 .pipe(d3.geo.clipCircle, Math.acos(1 / 1.4) - 1e-6) -->
+
+<!-- 	 if (alpha) render -->
+<!-- 	 .pipe(d3.geo.rotate, 0, Math.PI + tilt, 0) -->
+<!-- 	 .pipe(d3.geo.clipCircle, Math.PI - alpha) -->
+<!-- 	 .pipe(d3.geo.rotate, 0, -Math.PI - tilt, 0); -->
+
+<!-- 	 render = render -->
+<!-- 	 .pipe(d3.geo.project, d3.geo.satellite(1.4, tilt), .5 / 500) -->
+<!-- 	 .sink(d3.geom.contextSink, env.context)(env.graticule); -->
+
+<!-- 	 env.context.stroke(); -->
+<!-- 	 env.context.restore();") -->
+<!-- 	 ) -->
+
+<!-- 	 i$i6 <- d3() %>% timer(timer_function) -->
+
+<!-- 	 execute(i) -->
+
+<!-- ### Our goal: r2d3 -->
+
+<!-- 	r2d3({ -->
+<!-- 	 canvas <- d3() %>% select("canvas") -->
+<!-- 	 canvasNode <- canvas %>% node() -->
+<!-- 	 context <- canvasNode %>% getContext("2d") -->
+<!-- 	 width <- canvasNode$width -->
+<!-- 	 height <- canvasNode$height -->
+<!-- 	 distance <- 1.4 -->
+<!-- 	 scale <- 500 -->
+<!-- 	 graticule <- d3()$geo %>% graticule()() -->
+<!-- 	 sphere <- list(type = "Sphere") -->
+
+<!-- 	 d3() %>% timer(function(elapsed) { -->
+<!-- 	 context %>% clearRect(0, 0, width, height) -->
+<!-- 	 context %>% save() -->
+<!-- 	 tilt <- (abs((elapsed / 30) %% 358 - 179) - 89) * pi / 180 -->
+<!-- 	 alpha <- acos(distance * cos(tilt)) * 0.99 -->
+<!-- 	 render <- d3()$geo %>%  -->
+<!-- 	 	pipeline() %>% -->
+<!-- 	 source(d3()$geo$jsonSource) %>% -->
+<!-- 	 pipe(d3()$geo$rotate, 0, 0, elapsed / 3000) %>% -->
+<!-- 	 pipe(d3()$geo$clipCircle, acos(1 / distance) - 1e-6) -->
+
+<!-- 	 ... -->
+<!-- 	 }) -->
+<!-- 	}) -->
 	
 
-### Example 3: Easily extending D3 with plugins
-
-[](https://cdn.rawgit.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e/raw/7606d3b35233507ee41ade63f32e31df8c2bde7e/mtcars-r2d3.html)
+**Example 3: Easily extending D3 with plugins**
 
 One of crucial requirements we have in mind is to allow for easy extending of visualizations through D3 plugins. As an example we choose awesome Textures.js library. Below you can see how we've implemented interactive scatter plot showing mtcars data using r2d3 extended with textures. 
 
-Important requirement here is to track right version of libraries dependencies and resolve them correctly.
+<!--html_preserve-->
+<iframe width="100%" height="400" frameborder="0" scrolling="no" src="https://cdn.rawgit.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e/raw/7606d3b35233507ee41ade63f32e31df8c2bde7e/mtcars-r2d3.html"></iframe>
+<!--/html_preserve-->
 
-R source: _below_ 
+Important requirement here is to track right version of libraries dependencies and resolve them correctly.
 
 Html source: [https://gist.github.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e](https://gist.github.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e) 
 
-### Proof of Concept
+R source: _below_ 
 
-	library(r2d3)
-	library(texturer)
-	library(magrittr)
-	
-	i <- list()
-	i$i1 <- d3() %>%
-	 select(".r2d3") %>%
-	 append("svg") %>%
-	 attr("width", 500) %>%
-	 attr("height", 500) %>%
-	 save_var("svg")
-	i$i2 <- textures() %>%
-	 lines() %>%
-	 thicker() %>%
-	 save_var("dashed")
-	i$i3 <- textures() %>%
-	 circles() %>%
-	 size(5) %>%
-	 radius(2) %>%
-	 save_var("dots")
-	i$i4 <- get_var("svg") %>%
-	 call(get_var("dashed"))
-	i$i5 <- get_var("svg") %>%
-	 call(get_var("dots"))
-	i$i6 <- get_var("svg") %>%
-	 selectAll("circle") %>%
-	 data(mtcars) %>%
-	 enter() %>%
-	 append("circle") %>%
-	 attr("cx", js_func(get_var(".") %>% js_prop("hp"))) %>%
-	 attr("cy", js_func(get_var(".") %>% js_prop("disp"))) %>%
-	 attr("r", js_func(get_var(".") %>% js_prop("mpg"))) %>%
-	 attr('pointer-events', 'all') %>%
-	 style("fill", url(get_var("dots"))) %>%
-	 on("mouseover", js_func(d3() %>% select(this()) %>% style("fill", url(get_var("dashed"))))) %>%
-	 on("mouseout", js_func(d3() %>% select(this()) %>% style("fill", url(get_var("dots")))))
-	execute(i)
+![](images/r2d3texturercode.png)
 
-### Our goal: r2d3
+<!-- ### Proof of Concept -->
 
-	library(r2d3)
-	library(texturer)
-	library(magrittr)
-	
-	r2d3({
-	 svg <- d3() %>%
-	 select("body") %>%
-	 append("svg") %>%
-	 attr("width", 500) %>%
-	 attr("height", 500)
-	
-	 dashed <- textures() %>%
-	 lines() %>%
-	 thicker()
-	 dots <- textures() %>%
-	 circles() %>%
-	 size(5) %>%
-	 radius(2)
-	 
-	 svg$call(dashed)
-	 svg$call(dots)
-	
-	 svg %>%
-	 selectAll("circle") %>%
-	 data(mtcars) %>%
-	 enter() %>%
-	 append("circle") %>%
-	 attr("cx", ~ .$hp) %>%
-	 attr("cy", ~ .$disp) %>%
-	 attr("r", ~ .$mpg) %>%
-	 attr('pointer-events', 'all') %>%
-	 style("fill", dots) %>%
-	 on("mouseover", ~ d3() %>% select(this) %>% style("fill", dashed)) %>%
-	 on("mouseout", ~ d3() %>% select(this) %>% style("fill", dots))
-	})
+<!-- 	library(r2d3) -->
+<!-- 	library(texturer) -->
+<!-- 	library(magrittr) -->
 
- **The plan** 
+<!-- 	i <- list() -->
+<!-- 	i$i1 <- d3() %>% -->
+<!-- 	 select(".r2d3") %>% -->
+<!-- 	 append("svg") %>% -->
+<!-- 	 attr("width", 500) %>% -->
+<!-- 	 attr("height", 500) %>% -->
+<!-- 	 save_var("svg") -->
+<!-- 	i$i2 <- textures() %>% -->
+<!-- 	 lines() %>% -->
+<!-- 	 thicker() %>% -->
+<!-- 	 save_var("dashed") -->
+<!-- 	i$i3 <- textures() %>% -->
+<!-- 	 circles() %>% -->
+<!-- 	 size(5) %>% -->
+<!-- 	 radius(2) %>% -->
+<!-- 	 save_var("dots") -->
+<!-- 	i$i4 <- get_var("svg") %>% -->
+<!-- 	 call(get_var("dashed")) -->
+<!-- 	i$i5 <- get_var("svg") %>% -->
+<!-- 	 call(get_var("dots")) -->
+<!-- 	i$i6 <- get_var("svg") %>% -->
+<!-- 	 selectAll("circle") %>% -->
+<!-- 	 data(mtcars) %>% -->
+<!-- 	 enter() %>% -->
+<!-- 	 append("circle") %>% -->
+<!-- 	 attr("cx", js_func(get_var(".") %>% js_prop("hp"))) %>% -->
+<!-- 	 attr("cy", js_func(get_var(".") %>% js_prop("disp"))) %>% -->
+<!-- 	 attr("r", js_func(get_var(".") %>% js_prop("mpg"))) %>% -->
+<!-- 	 attr('pointer-events', 'all') %>% -->
+<!-- 	 style("fill", url(get_var("dots"))) %>% -->
+<!-- 	 on("mouseover", js_func(d3() %>% select(this()) %>% style("fill", url(get_var("dashed"))))) %>% -->
+<!-- 	 on("mouseout", js_func(d3() %>% select(this()) %>% style("fill", url(get_var("dots"))))) -->
+<!-- 	execute(i) -->
+
+<!-- ### Our goal: r2d3 -->
+
+<!-- 	library(r2d3) -->
+<!-- 	library(texturer) -->
+<!-- 	library(magrittr) -->
+
+<!-- 	r2d3({ -->
+<!-- 	 svg <- d3() %>% -->
+<!-- 	 select("body") %>% -->
+<!-- 	 append("svg") %>% -->
+<!-- 	 attr("width", 500) %>% -->
+<!-- 	 attr("height", 500) -->
+
+<!-- 	 dashed <- textures() %>% -->
+<!-- 	 lines() %>% -->
+<!-- 	 thicker() -->
+<!-- 	 dots <- textures() %>% -->
+<!-- 	 circles() %>% -->
+<!-- 	 size(5) %>% -->
+<!-- 	 radius(2) -->
+
+<!-- 	 svg$call(dashed) -->
+<!-- 	 svg$call(dots) -->
+
+<!-- 	 svg %>% -->
+<!-- 	 selectAll("circle") %>% -->
+<!-- 	 data(mtcars) %>% -->
+<!-- 	 enter() %>% -->
+<!-- 	 append("circle") %>% -->
+<!-- 	 attr("cx", ~ .$hp) %>% -->
+<!-- 	 attr("cy", ~ .$disp) %>% -->
+<!-- 	 attr("r", ~ .$mpg) %>% -->
+<!-- 	 attr('pointer-events', 'all') %>% -->
+<!-- 	 style("fill", dots) %>% -->
+<!-- 	 on("mouseover", ~ d3() %>% select(this) %>% style("fill", dashed)) %>% -->
+<!-- 	 on("mouseout", ~ d3() %>% select(this) %>% style("fill", dots)) -->
+<!-- 	}) -->
+
+### **The plan**
 
 We are going to divide this project in 3 basic phases:
- **Phase 1 Design and validation - approximately. 1 month ** 
+
+**Phase 1 Design and validation - approximately. 1 month ** 
 
 We are going to start a discussion on Github, when it comes to the most important design aspects mentioned above:
 
 - modulartiy
 - syntax: pipes (%>%) vs dollar sign ($)
-- using R specific functions in R2D3
+- using R specific functions in r2d3
 - debugging
 
 We are going to release information about our project's design discussion on multiple R-related social channels like:
@@ -408,16 +415,16 @@ We are going to release information about our project's design discussion on mul
 - R Consortium
 - Hacker news
 
-We will also try to implement 10 examples D3 specific visulations with current POC version of R2D3 to potentially identify other undetected issues.
+We will also try to implement 10 examples D3 specific visulations with current POC version of r2d3 to potentially identify other undetected issues.
 
- **Phase 2 - Core package implementation - approximately 3-4 months** 
+**Phase 2 - Core package implementation - approximately 3-4 months** 
 
 During this time we are going to finalise the implemention of this package and release it to CRAN:
 
 - translating basic R expressions to JS
 - polishing D3 like syntax R-to-JS runtime 
 - support for other D3 based plugins
-- handling exceptions with nice Documentation Urls(e.g. using R specific functions in R2D3)
+- handling exceptions with nice Documentation Urls(e.g. using R specific functions in r2d3)
 - create a documentation
 - write unity tests and basic examples coverage tets
 - CRAN release
@@ -449,9 +456,10 @@ Total: $18,200 (can be paid in few installments)
 
 ###  **Dissemination**
 
-We are going to open-source this project on Github using MIT license: [https://github.com/appsilon/r2d3]. We will be using **r-hub** for testing compatibility on different operating systems and machines. As stated before, by the end of the 2nd phase package will be released to CRAN. 
+We are going to open-source this project on Github using MIT license: (https://github.com/appsilon/r2d3)[https://github.com/appsilon/r2d3].<br>
+We will be using **r-hub** for testing compatibility on different operating systems and machines. As stated before, by the end of the 2nd phase package will be released to CRAN. 
 
-Besides two mandatory blog posts to R Consortium blog, we are going to use our Appsilon Data Science Blog to report significant progress in this package. During the 3rd phase we want to publish there a few posts about creating nice visualisations with R2D3 (Radial charts, 3D earth visualisations etc. ). It's worth mentioning that our blog's RSS feed is also connected to R-Bloggers, which gives it quite high community visibility. Extra adoption boost could give us a hosted post on RStudio and Microsoft's VSTR social channels, which are members of R Consortium. It would be nice to use social media channels of other members as well, if this package sides well with their business or marketing strategies.
+Besides two mandatory blog posts to R Consortium blog, we are going to use our Appsilon Data Science Blog to report significant progress in this package. During the 3rd phase we want to publish there a few posts about creating nice visualisations with r2d3 (Radial charts, 3D earth visualisations etc. ). It's worth mentioning that our blog's RSS feed is also connected to R-Bloggers, which gives it quite high community visibility. Extra adoption boost could give us a hosted post on RStudio and Microsoft's VSTR social channels, which are members of R Consortium. It would be nice to use social media channels of other members as well, if this package sides well with their business or marketing strategies.
 
 We are active on a few R-specific Data Science groups on Slack and FB, so we are going to publish updates there as well. From our past experiences we know that can get a lot of valuable feedback from community there.
 
