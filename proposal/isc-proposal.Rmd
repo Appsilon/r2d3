@@ -3,6 +3,14 @@ title: "r2d3 - R domain specific language for D3.js"
 output: html_document
 ---
 
+<!--html_preserve-->
+<style>
+.main-container {
+   max-width: 1240px !important;
+}
+</style>
+<!--/html_preserve-->
+
 ```{r setup, eval=TRUE, results='hide', echo=FALSE}
 knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```
@@ -409,8 +417,8 @@ We are going to start a discussion on Github, when it comes to the most importan
 
 We are going to release information about our project's design discussion on multiple R-related social channels like:
 
-- FB groups (TODO name two)
-- Slack channels
+- FB groups e.g. AnalyticsEdge, Users of R Statistical Package
+- Slack channels e.g. datascientists.slack.com, r-ladies.slack.com
 - R Bloggers
 - R Consortium
 - Hacker news
