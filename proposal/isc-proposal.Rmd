@@ -26,7 +26,7 @@ on behalf of [Appsilon Data Science](http://appsilondatascience.com). Email: hel
 
 ### **Short Description**
 
-Data driven documents in R without predefined wrappers. With this package you can create any visualisation possible in D3 directly with R language.
+Data driven documents in R without predefined wrappers. With this package you can create any visualisation possible in D3 directly with R language without any knowledge of JS. The structure of the visualisation (plot, graph, etc.) is described in R and later on interpreted in the browser. It's wrapped in **htmlwidget** so users can use almost any D3 visualisations in RMarkdown reports, reactive Shiny apps and view them in RStudio.
 
 Interactive version of this proposal is hosted on Github pages: [https://appsilon.github.io/r2d3-proposal/](https://appsilon.github.io/r2d3-proposal/).
 
