@@ -52,9 +52,9 @@ We think this project aligns well with the R Consortium's goals:
 
 ### **Solution**
 
-We solve this using **htmlwidget** . Thanks to that users can use D3 in RMarkdown reports and reactive Shiny apps. The structure of the visualisation (plot, graph, etc.) is described in R and later on interpreted in the browser. As the code is interpreted it might be adapted for compatibility with different API's of D3 (there are breaking changes between v3 and v4 [https://github.com/d3/d3/blob/master/CHANGES.md]).
+We solve this using **htmlwidget** . Thanks to that users can use D3 in RMarkdown reports and reactive Shiny apps. The structure of the visualisation (plot, graph, etc.) is described in R and later on interpreted in the browser. As the code is interpreted it might be adapted for compatibility with different API's of D3 (there are [breaking changes](https://github.com/d3/d3/blob/master/CHANGES.md) between v3 and v4).
 
-We have implemented a Proof of Concept (POC) that allows for creation of various plots and animations, which is hosted on target Github page: [ [https://github.com/appsilon/r2d3](https://github.com/appsilondatascience/r2d3) ]. Creating this has already eliminated biggest risks of this project. We managed to prove that general implementation concept is possible. We already know that 90% of D3 plots can be easily implemented purely in R and we believe that we can make it 100%. At the same time we want to make our Domain Specific Language (DSL) usage as convenient as possible. We understand that this is going to play crucial role in adoption of this library. 
+We have implemented a Proof of Concept (POC) that allows for creation of various plots and animations, which is hosted on target Github page: [https://github.com/appsilon/r2d3](https://github.com/appsilondatascience/r2d3). Creating this has already eliminated biggest risks of this project. We managed to prove that general implementation concept is possible. We already know that 90% of D3 plots can be easily implemented purely in R and we believe that we can make it 100%. At the same time we want to make our Domain Specific Language (DSL) usage as convenient as possible. We understand that this is going to play crucial role in adoption of this library. 
 
 The biggest challenge that will have to be faced is **debugging.** 
 
@@ -464,7 +464,7 @@ Total: $18,200 (can be paid in few installments)
 
 ###  **Dissemination**
 
-We are going to open-source this project on Github using MIT license: (https://github.com/appsilon/r2d3)[https://github.com/appsilon/r2d3].<br>
+We are going to open-source this project on Github using MIT license: [https://github.com/appsilon/r2d3](https://github.com/appsilon/r2d3).<br>
 We will be using **r-hub** for testing compatibility on different operating systems and machines. As stated before, by the end of the 2nd phase package will be released to CRAN. 
 
 Besides two mandatory blog posts to R Consortium blog, we are going to use our Appsilon Data Science Blog to report significant progress in this package. During the 3rd phase we want to publish there a few posts about creating nice visualisations with r2d3 (Radial charts, 3D earth visualisations etc. ). It's worth mentioning that our blog's RSS feed is also connected to R-Bloggers, which gives it quite high community visibility. Extra adoption boost could give us a hosted post on RStudio and Microsoft's VSTR social channels, which are members of R Consortium. It would be nice to use social media channels of other members as well, if this package sides well with their business or marketing strategies.
