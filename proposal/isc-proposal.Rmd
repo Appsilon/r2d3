@@ -14,7 +14,7 @@ output: html_document
 ```{r setup, eval=TRUE, results='hide', echo=FALSE}
 knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```
-*Note: We are aware that two packages with a same name already exists ( [https://github.com/hadley/r2d3](https://github.com/hadley/r2d3), [https://github.com/jamesthomson/R2D3](https://github.com/jamesthomson/R2D3) ), however what we are proposing is a completely different thing and this particular name will suit it the most. Hadley's library is no longer maintained and is only a D3 wrapper for ggplot2 and James Thomson's library wraps JS code in R functions. None is submitted to CRAN officialy. We are also open to change the name to avoid confusion in community.*
+*Note: We are aware that two packages with a same name already exists ( [https://github.com/hadley/r2d3](https://github.com/hadley/r2d3), [https://github.com/jamesthomson/R2D3](https://github.com/jamesthomson/R2D3) ), however what we are proposing is a completely different thing and this particular name will suit it the most. Hadley's library is no longer maintained and is only a D3 wrapper for ggplot2 and James Thomson's library wraps JS code in R functions. None is submitted to CRAN officially. We are also open to change the name to avoid confusion in community.*
 
 **Applicants:** Filip Stachura, Marek Rogala, Olga Mierzwa-Sulima, Krzysztof Wróbel<br>
 on behalf of [Appsilon Data Science](http://appsilondatascience.com). Email: hello@appsilondatascience.com
@@ -25,20 +25,20 @@ Data driven documents in R without predefined wrappers. With this package you ca
 
 ###  **The problem and motivation** 
 
-Problems that data scientist needs to visualize are often very complex and require more advanced solutions. It's natural to look for a better data visualisation methods in R. Although there are many greatly supported R packages that allow to create plots (ggplot2, plotly, rbokeh), when it comes to non-standard visualisations like network graphs, bubble or radial charts you have to look for something created by the community. 
+Problems that data scientist needs to visualise are often very complex and require more advanced solutions. It's natural to look for a better data visualisation methods in R. Although there are many greatly supported R packages that allow to create plots (ggplot2, plotly, rbokeh), when it comes to non-standard visualisations like network graphs, bubble or radial charts you have to look for something created by the community. 
 
 If you know JavaScript (JS) you might think about wrapping a D3 component into **htmlwidget** and use it in your RMarkdown report or Shiny app. Unfortunately only some D3 visualisation methods are implemented in R by community, for instance: NetworkGraphs( [http://christophergandrud.github.io/networkD3/](http://christophergandrud.github.io/networkD3/) ), BubbleChart (https://github.com/jcheng5/bubbles), CoffeeWheel ( [https://github.com/armish/coffeewheel](https://github.com/armish/coffeewheel) ), etc. . What's more only some of them generate truly interactive visualisations, other allow for image or SVG generation.
-So when it comes to customization they are very limited, time-consuming and often difficult to do without an appropriate JS knowledge. Since not many data scientists know JS, for the sake of their work, they often resort to manual editing of produced SVG files or static images in Graphics editors (e.g. Adobe Photoshop). In other cases they order visualisations from D3 specialists. 
+So when it comes to customisation they are very limited, time-consuming and often difficult to do without an appropriate JS knowledge. Since not many data scientists know JS, for the sake of their work, they often resort to manual editing of produced SVG files or static images in Graphics editors (e.g. Adobe Photoshop). In other cases they order visualisations from D3 specialists. 
 
-Either way, currently it's difficult, time and cost consuming to create trully interactive and advanced visualisations in R.
+Either way, currently it's difficult, time and cost consuming to create truly interactive and advanced visualisations in R.
 
  **Value Proposition** 
 
-So in order to tackle the problems of customized, interactive and pleasant data visualisations we are proposing a standardized package wrapping D3, which will allow data scientists to recreate any data visualisation possible in D3 directly with R language without any knowledge of JS. With a D3-like syntax anyone would be able to create visualisations available in D3 among others like those below. 
+So in order to tackle the problems of customised, interactive and pleasant data visualisations we are proposing a standardised package wrapping D3, which will allow data scientists to recreate any data visualisation possible in D3 directly with R language without any knowledge of JS. With a D3-like syntax anyone would be able to create visualisations available in D3 among others like those below. 
 
 ![](images/charts.png)
 
-In a longer term it will lead to much cleaner code in R scripts and Shiny apps, due to not mixing too much JS with R. Also it will be less likely to run into compatibility issues, which you can have when integrating various R packages based on D3. Hopefully it will also be possible to unify current standards for wrapping D3 plugins and components for using them where it's necessary: especialy in RMarkdown reports and Shiny apps.
+In a longer term it will lead to much cleaner code in R scripts and Shiny apps, due to not mixing too much JS with R. Also it will be less likely to run into compatibility issues, which you can have when integrating various R packages based on D3. Hopefully it will also be possible to unify current standards for wrapping D3 plugins and components for using them where it's necessary: especially in RMarkdown reports and Shiny apps.
 
 Last, but not least all the necessary ingredients for nice visualisations in one R package will be unified under a single package with well designed standards. That gives a better chance of strong community support through years of its development. 
 
@@ -66,7 +66,7 @@ During POC we have created a few design assumptions for future package developme
 
 - In POC r2d3 package we've generated D3 functions automatically. Thanks to that we can get later on interpret abstract structure within JavaScript. 
 - we've made our functions pipes friendly as it seems like a feasible alternative to Object Oriented (OO) design of D3. Pipes feels more natural in R in our opinion. Still it's open for discussion and $ can be used in general syntax. 
-- For some complex D3 instructions we've added js specific functions (js_prop, js_fun, save_var, get_var, etc.). We've already got feedback from R users that it seems too complicated. One alternative would be to generate that code automatically, this for sure can work for simple expressions, lambdas etc. 
+- For some complex D3 instructions we've added JS specific functions (js_prop, js_fun, save_var, get_var, etc.). We've already got feedback from R users that it seems too complicated. One alternative would be to generate that code automatically, this for sure can work for simple expressions, lambdas etc. 
 - we want to allow for purrr like lambdas usage.
 - seamless usage of D3 plugins in r2d3.
 - debugging via an appropriate exception handling: code position and documentation link.
@@ -310,17 +310,17 @@ Current POC code is not perfect, but still we have created fairly complicated an
 
 **Example 3: Easily extending D3 with plugins**
 
-One of crucial requirements we have in mind is to allow for easy extending of visualizations through D3 plugins. As an example we choose awesome Textures.js library. Below you can see how we've implemented interactive scatter plot showing mtcars data using r2d3 extended with textures. 
+One of crucial requirements we have in mind is to allow for easy extending of visualisations through D3 plugins. As an example we've chosen awesome Textures.js library. Below you can see how we've implemented an **interactive* scatter plot showing mtcars data using r2d3 extended with textures. 
 
 <!--html_preserve-->
 <iframe width="100%" height="400" frameborder="0" scrolling="no" src="https://cdn.rawgit.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e/raw/7606d3b35233507ee41ade63f32e31df8c2bde7e/mtcars-r2d3.html"></iframe>
 <!--/html_preserve-->
 
-Important requirement here is to track right version of libraries dependencies and resolve them correctly.
+Important challenge here is to track right version of libraries dependencies and resolve them correctly.
 
 Html source: [https://gist.github.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e](https://gist.github.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e) 
 
-R source: _below_ 
+R source: **below**
 
 ![](images/r2d3texturercode.png)
 
@@ -410,7 +410,7 @@ We are going to divide this project in 3 basic phases:
 
 We are going to start a discussion on Github, when it comes to the most important design aspects mentioned above:
 
-- modulartiy
+- modularity
 - syntax: pipes (%>%) vs dollar sign ($)
 - using R specific functions in r2d3
 - debugging
@@ -423,18 +423,18 @@ We are going to release information about our project's design discussion on mul
 - R Consortium
 - Hacker news
 
-We will also try to implement 10 examples D3 specific visulations with current POC version of r2d3 to potentially identify other undetected issues.
+We will also try to implement 10 examples D3 specific visualisations with current POC version of r2d3 to potentially identify other undetected issues.
 
 **Phase 2 - Core package implementation - approximately 3-4 months** 
 
-During this time we are going to finalise the implemention of this package and release it to CRAN:
+During this time we are going to finalise the implementation of this package and release it to CRAN:
 
 - translating basic R expressions to JS
 - polishing D3 like syntax R-to-JS runtime 
 - support for other D3 based plugins
 - handling exceptions with nice Documentation Urls(e.g. using R specific functions in r2d3)
 - create a documentation
-- write unity tests and basic examples coverage tets
+- write unity tests and basic examples coverage tests
 - CRAN release
 
  **Phase 3 - Package maturity tests - approximately 1-2 months** 
@@ -460,7 +460,7 @@ Summing it up:
 - Marketing: $800
 - ISC help: priceless 
 
-Total: $18,200 (can be paid in few installments)
+Total: $18,200 (can be paid in a few instalments)
 
 ###  **Dissemination**
 
