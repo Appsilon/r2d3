@@ -14,7 +14,7 @@ output: html_document
 ```{r setup, eval=TRUE, results='hide', echo=FALSE}
 knitr::opts_knit$set(warning = FALSE, message= FALSE)
 ```
-Note: _We are aware that package with a same name already exists (_ [_https://github.com/hadley/r2d3_](https://github.com/hadley/r2d3) _), however what we are proposing is a completely different thing and this particular name will suit it the most. Hadley's library is no longer maintained and is only a D3 wrapper for ggplot2._ 
+*Note: We are aware that two packages with a same name already exists ( [https://github.com/hadley/r2d3](https://github.com/hadley/r2d3), [https://github.com/jamesthomson/R2D3](https://github.com/jamesthomson/R2D3) ), however what we are proposing is a completely different thing and this particular name will suit it the most. Hadley's library is no longer maintained and is only a D3 wrapper for ggplot2 and James Thomson's library wraps JS code in R functions. None is submitted to CRAN officialy. We are also open to change the name to avoid confusion in community.*
 
 **Applicants:** Filip Stachura, Marek Rogala, Olga Mierzwa-Sulima, Krzysztof Wróbel<br>
 on behalf of [Appsilon Data Science](http://appsilondatascience.com). Email: hello@appsilondatascience.com
