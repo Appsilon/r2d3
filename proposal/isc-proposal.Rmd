@@ -11,10 +11,6 @@ knitr::opts_knit$set(warning = FALSE, message= FALSE)
 
 Note: _We are aware that package with a same name already exists (_ [_https://github.com/hadley/r2d3_](https://github.com/hadley/r2d3) _), however what we are proposing is a completely different thing and this particular name will suit it the most. Hadley's library is no longer maintained and is only a D3 wrapper for ggplot2._ 
 
- **Applicants: Filip Stachura, Marek Rogala, Olga Mierzwa-Sulima**<br>
- **Supporting authors: Krzysztof Wróbel**<br>
-on behalf of Appsilon Data Science company. Contact email: hello@appsilondatascience.com; contact number: +48 509 125 362
-
 ### **Short Description**
 
 Data driven documents in R without predefined wrappers. With this package you can create any visualisation possible in D3 directly with R language.
