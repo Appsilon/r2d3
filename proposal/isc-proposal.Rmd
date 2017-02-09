@@ -463,4 +463,5 @@ Besides two mandatory blog posts to R Consortium blog, we are going to use our A
 
 We are active on a few R-specific Data Science groups on Slack and FB, so we are going to publish updates there as well. From our past experiences we know that can get a lot of valuable feedback from community there.
 
-Every year we are participating in global R conferences like useR! and EARL, so depending on proposal acceptance date we might be able to give r2d3 presentation during this years editions. Otherwise we are going to give a talk on useR! and EARLs in 2018, both in Europe and USA. Obviously we are going to promote this project in local R events in Poland.
+This year we are going to participate in useR! and EARL, so depending on proposal acceptance date we might be able to give r2d3 presentation during this years editions. Otherwise we are going to give a talk on useR! and EARLs in 2018, both in Europe and USA.
+We will also make sure to promote this project on R events in Poland.
