@@ -1,4 +1,4 @@
-appendStyle = function(css) {
+var appendStyle = function(css) {
   var head = document.head || document.getElementsByTagName('head')[0];
   var style = document.createElement('style');
 
@@ -10,7 +10,7 @@ appendStyle = function(css) {
   }
 
   head.appendChild(style);
-}
+};
 
 var tryToGetFunctions = function(value) {
   try {
@@ -30,7 +30,7 @@ var execute_instruction = function(env, inst_parts) {
     switch(elem.command) {
       case "save_var":
         var env_pointer = env;
-        name_parts = elem.args.name.split('.')
+        var name_parts = elem.args.name.split('.')
         for (var i = 0; i < name_parts.length - 1; ++i) {
           env_pointer = env_pointer[name_parts[i]];
         }
@@ -74,14 +74,13 @@ var execute_instruction = function(env, inst_parts) {
           return tryToGetFunctions(arg);
         });
         if (elem.fun === "data") {
-          d = evaluated_args[0];
+          var d = evaluated_args[0];
           evaluated_args[0] = (new Array(d[Object.keys(d)[0]].length).fill(undefined)).map(function(_, i) {
             var o = {};
             Object.keys(d).forEach(function(key) { o[key]= d[key][i]});
             return o;
           });
         }
-        console.log(current, elem.fun)
         current = current[elem.fun].apply(current, evaluated_args);
         break;
       default:
@@ -112,14 +111,7 @@ HTMLWidgets.widget({
         }
       },
 
-      resize: function(width, height) {
-      },
-
-      // Make the object available as a property on the widget
-      // instance we're returning from factory(). This is generally a
-      // good idea for extensibility--it helps users of this widget
-      // interact directly with object, if needed.
-      // r2d3: sig
+      resize: function(width, height) {}
     };
   }
 });
