@@ -1,6 +1,11 @@
 ---
 title: "r2d3 - R domain specific language for D3.js"
-output: html_document
+linkcolor: blue
+geometry: margin=20mm
+output:
+  rmarkdown::pdf_document:
+    fig_caption: no
+    
 ---
 
 <!--html_preserve-->
@@ -22,6 +27,8 @@ on behalf of [Appsilon Data Science](http://appsilondatascience.com). Email: hel
 ### **Short Description**
 
 Data driven documents in R without predefined wrappers. With this package you can create any visualisation possible in D3 directly with R language.
+
+Interactive version of this proposal is hosted on Github pages: [https://appsilon.github.io/r2d3-proposal/](https://appsilon.github.io/r2d3-proposal/).
 
 ###  **The problem and motivation** 
 
@@ -162,13 +169,17 @@ All those assumptions are going to be discussed with R community in the 1st phas
 
 [](https://cdn.rawgit.com/filipstachura/0ec130d0d8e478882d626ae94c77a117/raw/73b8a21adf9ef63ae9699ea242964db6a7f84be2/sphere-r2d3.html)
 
-Using r2d3 creating animations feels natural as it does in D3. No need to animate frames. Examples in this gist is completely created with R and usable: 
+Using r2d3 creating animations feels natural as it does in D3. No need to animate frames manually. Example in this gist is completely created with R and works like a charm. 
 
 <!--html_preserve-->
 <iframe width="100%" height="400" frameborder="0" scrolling="no" src="https://cdn.rawgit.com/filipstachura/0ec130d0d8e478882d626ae94c77a117/raw/73b8a21adf9ef63ae9699ea242964db6a7f84be2/sphere-r2d3.html"></iframe>
 <!--/html_preserve-->
 
 Current POC code is not perfect, but still we have created fairly complicated animations directly in RStudio watching them within the Viewer. It feels awesome and we want more.
+
+Html source: [https://gist.github.com/filipstachura/0ec130d0d8e478882d626ae94c77a117](https://gist.github.com/filipstachura/0ec130d0d8e478882d626ae94c77a117)
+
+Check out the R source **below**.
 
 ![](images/r2d3globecode.png)
 <!-- ### D3.js -->
@@ -320,7 +331,7 @@ Important challenge here is to track right version of libraries dependencies and
 
 Html source: [https://gist.github.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e](https://gist.github.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e) 
 
-R source: **below**
+Check out the R source **below**.
 
 ![](images/r2d3texturercode.png)
 
