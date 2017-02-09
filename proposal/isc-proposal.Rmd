@@ -27,7 +27,7 @@ Data driven documents in R without predefined wrappers. With this package you ca
 
 Problems that data scientist needs to visualise are often very complex and require more advanced solutions. It's natural to look for a better data visualisation methods in R. Although there are many greatly supported R packages that allow to create plots (ggplot2, plotly, rbokeh), when it comes to non-standard visualisations like network graphs, bubble or radial charts you have to look for something created by the community. 
 
-If you know JavaScript (JS) you might think about wrapping a D3 component into **htmlwidget** and use it in your RMarkdown report or Shiny app. Unfortunately only some D3 visualisation methods are implemented in R by community, for instance: NetworkGraphs( [http://christophergandrud.github.io/networkD3/](http://christophergandrud.github.io/networkD3/) ), BubbleChart (https://github.com/jcheng5/bubbles), CoffeeWheel ( [https://github.com/armish/coffeewheel](https://github.com/armish/coffeewheel) ), etc. . What's more only some of them generate truly interactive visualisations, other allow for image or SVG generation.
+If you know JavaScript (JS) you might think about wrapping a D3 component into **htmlwidget** and use it in your RMarkdown report or Shiny app. Unfortunately only some D3 visualisation methods are implemented in R by community, for instance: NetworkGraphs( [http://christophergandrud.github.io/networkD3/](http://christophergandrud.github.io/networkD3/) ), BubbleChart (https://github.com/jcheng5/bubbles), CoffeeWheel ( [https://github.com/armish/coffeewheel](https://github.com/armish/coffeewheel) ), etc. . What's more only some of them generate interactive visualisations, other allow for image or SVG generation.
 So when it comes to customisation they are very limited, time-consuming and often difficult to do without an appropriate JS knowledge. Since not many data scientists know JS, for the sake of their work, they often resort to manual editing of produced SVG files or static images in Graphics editors (e.g. Adobe Photoshop). In other cases they order visualisations from D3 specialists. 
 
 Either way, currently it's difficult, time and cost consuming to create truly interactive and advanced visualisations in R.
@@ -310,7 +310,7 @@ Current POC code is not perfect, but still we have created fairly complicated an
 
 **Example 3: Easily extending D3 with plugins**
 
-One of crucial requirements we have in mind is to allow for easy extending of visualisations through D3 plugins. As an example we've chosen awesome Textures.js library. Below you can see how we've implemented an **interactive* scatter plot showing mtcars data using r2d3 extended with textures. 
+One of crucial requirements we have in mind is to allow for easy extending of visualisations through D3 plugins. As an example we've chosen awesome Textures.js library. Below you can see how we've implemented an **interactive** scatter plot showing mtcars data using r2d3 extended with textures. 
 
 <!--html_preserve-->
 <iframe width="100%" height="400" frameborder="0" scrolling="no" src="https://cdn.rawgit.com/filipstachura/c926abd54ff7225043d5ee7ca354af6e/raw/7606d3b35233507ee41ade63f32e31df8c2bde7e/mtcars-r2d3.html"></iframe>
