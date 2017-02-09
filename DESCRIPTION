@@ -1,9 +1,9 @@
 Package: r2d3
 Type: Package
-Title: What the Package Does (Title Case)
+Title: R domain specific language for D3.js
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Filip Stachura, Marek Rogala
+Maintainer: Filip Stachura <filip@appsilondatascience.com>
+Description: Data driven documents in R without predefined wrappers. With this package you can create any visualisation possible in D3 directly with R language.
+License: MIT
 LazyData: TRUE
