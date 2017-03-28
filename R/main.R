@@ -6,7 +6,7 @@ execute <- function(insts, css = "") {
     insts = insts,
     css = css
   )
-  htmlwidgets::createWidget("r2d3", args, width = NULL, height = NULL)
+  htmlwidgets::createWidget("r2d3", args, width = 500, height = 500)
 }
 
 createFunction <- function(funName) {
