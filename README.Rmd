@@ -65,7 +65,7 @@ suppressMessages(execute(i))
 
 <br/>
 <br/>
-Note: code above will not work with the current version of the package. It is code compatible with our design. Current [working version](https://github.com/Appsilon/r2d3/blob/master/examples/texturer_demo.R).
+Note: code above will not work with the current version of the package. It is code compatible with our design. Current [working version is here](https://github.com/Appsilon/r2d3/blob/master/examples/texturer_demo.R).
 
 
 The problem and motivation 
